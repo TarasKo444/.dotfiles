@@ -8,23 +8,46 @@ return {
       { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
       "nvim-treesitter/nvim-treesitter-context",
     },
+    opts = {
+      ensure_installed = {
+        "bash",
+        "c",
+        "comment",
+        "css",
+        "go",
+        "graphql",
+        "help",
+        "html",
+        "http",
+        "javascript",
+        "json",
+        "latex",
+        "lua",
+        "python",
+        "rust",
+        "typescript",
+      },
+
+      -- Install parsers synchronously (only applied to `ensure_installed`)
+      sync_install = false,
+    },
     config = function()
       local ts = require("nvim-treesitter")
 
-      local ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "javascript", "html", "python", "rust", "c_sharp" }
-
-      local already_installed = ts.get_installed()
-
-      local to_install = vim
-        .iter(ensure_installed)
-        :filter(function(parser)
-          return not vim.tbl_contains(already_installed, parser)
-        end)
-        :totable()
-
-      if #to_install > 0 then
-        ts.install(to_install)
-      end
+      -- local ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "javascript", "html", "python", "rust", "c_sharp" }
+      --
+      -- local already_installed = ts.get_installed()
+      --
+      -- local to_install = vim
+      --   .iter(ensure_installed)
+      --   :filter(function(parser)
+      --     return not vim.tbl_contains(already_installed, parser)
+      --   end)
+      --   :totable()
+      --
+      -- if #to_install > 0 then
+      --   ts.install(to_install)
+      -- end
 
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("EnableTreesitterHighlighting", { clear = true }),

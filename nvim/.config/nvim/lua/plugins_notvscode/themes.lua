@@ -22,9 +22,10 @@ return {
     config = function()
       require("rose-pine").setup({
         styles = {
-          italic = false,
           bold = false,
-        }
+          italic = false,
+          transparency = false,
+        },
       })
 
       local function apply_overrides()

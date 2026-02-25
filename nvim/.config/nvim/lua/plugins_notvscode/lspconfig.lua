@@ -55,13 +55,8 @@ return {
         accept = { auto_brackets = { enabled = false } },
         menu = {
           draw = {
-            --- @param ctx blink.cmp.Context
-            columns = function (ctx)
-              return { { "kind_icon" }, { "label", gap = 1 } };
-              -- return { { "kind_icon" }, {"label_description"} };
-            end,
+            columns = { { "kind_icon" }, { "label", gap = 1 } },
             components = {
-              -- Probably change here for java
               label = {
                 text = function(ctx)
                   return require("colorful-menu").blink_components_text(ctx)
