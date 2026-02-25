@@ -138,6 +138,7 @@ alias v="nvim"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/snap/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/bin/:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
