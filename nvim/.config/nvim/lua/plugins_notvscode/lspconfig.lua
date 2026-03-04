@@ -55,7 +55,13 @@ return {
         accept = { auto_brackets = { enabled = false } },
         menu = {
           draw = {
-            columns = { { "kind_icon" }, { "label", gap = 1 } },
+            columns = function()
+              if vim.bo.filetype == 'java' then
+                return { { 'kind_icon' }, { 'label', 'label_description', gap = 1 } }
+              else
+                return { { 'kind_icon' }, { 'label', gap = 1 } }
+              end
+            end,
             components = {
               label = {
                 text = function(ctx)
