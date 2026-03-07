@@ -18,7 +18,7 @@ return {
         keymap = {
           accept = "<C-p>",
           -- accept = false,
-          accept_word = false,
+          accept_word = "♠",
           accept_line = false,
         },
       },
