@@ -15,6 +15,7 @@ return {
       prompt_save_on_select_new_entry = false,
       constrain_cursor = 'name',
       lazy = false,
+      watch_for_changes = true,
       view_options = {
         show_hidden = true,
         is_always_hidden = function(name, _)
