@@ -1,5 +1,4 @@
 require("lazy_init")
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -122,6 +121,12 @@ vim.keymap.set('n', '<C-S-l>', ':vertical resize +2<CR>')
 vim.keymap.set("i", "<S-Tab>", "<C-d>", opts)
 
 vim.api.nvim_create_user_command('W', 'write', {})
+
+vim.filetype.add({
+  extension = {
+    h = "c",
+  },
+})
 
 -- no more comments on new lines
 vim.api.nvim_create_autocmd("FileType", {
