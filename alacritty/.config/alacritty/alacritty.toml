@@ -1,0 +1,39 @@
+[font.normal]
+# family = "IosevkaTerm Nerd Font"
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[env]
+TERM = "alacritty"
+
+[window]
+dynamic_padding = false
+option_as_alt = "Both"
+
+[keyboard]
+bindings = [
+    { key = "=", mods = "Command", action = "IncreaseFontSize" },
+    { key = "=", mods = "Command", action = "IncreaseFontSize" },
+    { key = "=", mods = "Command", action = "IncreaseFontSize" },
+    { key = "=", mods = "Command", action = "IncreaseFontSize" },
+    { key = "=", mods = "Command", action = "IncreaseFontSize" },
+    { key = "-", mods = "Command", action = "DecreaseFontSize" },
+    { key = "-", mods = "Command", action = "DecreaseFontSize" },
+    { key = "-", mods = "Command", action = "DecreaseFontSize" },
+    { key = "-", mods = "Command", action = "DecreaseFontSize" },
+    { key = "-", mods = "Command", action = "DecreaseFontSize" },
+    { key = "Right", mods = "Alt", chars = "\u001BF" },
+    { key = "Left",  mods = "Alt", chars = "\u001BB" },
+    # { key = "=", mods = "Control", action = "IncreaseFontSize" },
+    # { key = "=", mods = "Control", action = "IncreaseFontSize" },
+    # { key = "=", mods = "Control", action = "IncreaseFontSize" },
+    # { key = "=", mods = "Control", action = "IncreaseFontSize" },
+    # { key = "=", mods = "Control", action = "IncreaseFontSize" },
+    # { key = "-", mods = "Control", action = "DecreaseFontSize" },
+    # { key = "-", mods = "Control", action = "DecreaseFontSize" },
+    # { key = "-", mods = "Control", action = "DecreaseFontSize" },
+    # { key = "-", mods = "Control", action = "DecreaseFontSize" },
+    # { key = "-", mods = "Control", action = "DecreaseFontSize" },
+    { key = "K", mods = "Control|Shift", chars = "\u001b[75;5u" },
+    { key = "J", mods = "Control|Shift", chars = "\u001b[74;6u"}
+]

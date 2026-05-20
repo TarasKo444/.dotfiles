@@ -39,17 +39,10 @@ return {
       offsetEncoding = { 'utf-16' },
     },
   },
-  basedpyright = {
-    settings = {
-      basedpyright = {
-        analysis = {
-          diagnosticMode = "workspace",
-          indexingDefaultSeverity = "info",
-          autoImportCompletions = true,
-          useLibraryCodeForTypes = true,
-        },
-      },
-    },
+  ruff = {
+    cmd = { 'ruff', 'server' },
+    filetypes = { 'python' },
+    root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' },
   },
   jdtls = {
     cmd = { "jdtls" },

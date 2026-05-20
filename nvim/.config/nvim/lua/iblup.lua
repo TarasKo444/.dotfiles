@@ -197,8 +197,8 @@ else
     end,
   })
 
-  -- vim.cmd.colorscheme("gruber-darker")
-  vim.cmd.colorscheme("rose-pine")
+  vim.cmd.colorscheme("gruber-darker")
+  -- vim.cmd.colorscheme("rose-pine")
 end
 
 if vim.g.neovide then
