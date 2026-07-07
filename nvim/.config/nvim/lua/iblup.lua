@@ -22,6 +22,7 @@ require("lazy").setup({
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
+  { import = "plugins_always" },
   { import = "plugins_notvscode", cond = (function() return not vim.g.vscode end) },
   { import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
@@ -151,6 +152,29 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+local errors_only = false
+vim.api.nvim_create_user_command("ErrorsOnly", function()
+  errors_only = not errors_only
+
+  if errors_only then
+    vim.diagnostic.config({
+      severity = { min = vim.diagnostic.severity.ERROR },
+      virtual_text = { severity = { min = vim.diagnostic.severity.ERROR } },
+      signs = { severity = { min = vim.diagnostic.severity.ERROR } },
+      underline = { severity = { min = vim.diagnostic.severity.ERROR } },
+    })
+    print("Diagnostics: errors only")
+  else
+    vim.diagnostic.config({
+      severity = nil,
+      virtual_text = { severity = nil },
+      signs = { severity = nil },
+      underline = { severity = nil },
+    })
+    print("Diagnostics: all levels")
+  end
+end, {})
+
 vim.api.nvim_create_user_command(
   'RemoveCarriageReturns', function()
     vim.cmd('silent! %s/\\r//g')
@@ -172,11 +196,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 
 vim.api.nvim_create_user_command("OpenPdf", function()
-    local filepath = vim.api.nvim_buf_get_name(0)
-    if filepath:match("%.typ$") then
-        local pdf_path = filepath:gsub("%.typ$", ".pdf")
-        vim.system({ "open", pdf_path })
-    end
+  local filepath = vim.api.nvim_buf_get_name(0)
+  if filepath:match("%.typ$") then
+    local pdf_path = filepath:gsub("%.typ$", ".pdf")
+    vim.system({ "open", pdf_path })
+  end
 end, {})
 
 
@@ -197,7 +221,8 @@ else
     end,
   })
 
-  vim.cmd.colorscheme("gruber-darker")
+  vim.cmd.colorscheme("vscode")
+  -- vim.cmd.colorscheme("gruber-darker")
   -- vim.cmd.colorscheme("rose-pine")
 end
 

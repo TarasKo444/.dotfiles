@@ -122,12 +122,12 @@ return {
         vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
         vim.keymap.set("n", "<leader>sd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
         vim.keymap.set("n", "<leader>SD", vim.diagnostic.setqflist, { desc = "Project Diagnostics (Quickfix)" })
+        vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help)
 
         vim.keymap.set({ "n", "i" }, "<C-Space>", function()
           ---@diagnostic disable-next-line: assign-type-mismatch
           cmp.show({ providers = cmp_config.sources.default })
         end)
-        vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help)
       end
     end,
   },
