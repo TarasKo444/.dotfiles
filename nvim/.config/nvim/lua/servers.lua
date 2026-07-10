@@ -44,6 +44,19 @@ return {
     filetypes = { 'python' },
     root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' },
   },
+  basedpyright = {
+    settings = {
+      basedpyright = {
+        analysis = {
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
+          autoImportCompletions = true,
+          typeCheckingMode = 'basic',
+          diagnosticMode = 'workspace',
+        },
+      },
+    },
+  },
   jdtls = {
     cmd = { "jdtls" },
     filetypes = { "java" },

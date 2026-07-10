@@ -12,3 +12,5 @@ keymap("v", "p", '"_dP', opts)
 keymap({"i","n", "v"}, "<Esc>", "<cmd>lua require('vscode').action('hideSuggestWidget')<CR><Esc>", opts)
 
 keymap({"n", "i"}, "<Tab>", "<cmd>require('vscode').action('editor.action.inlineSuggest.commit')<CR>", opts)
+
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
