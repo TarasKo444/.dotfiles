@@ -3,7 +3,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 require("lazy").setup({
-  -- { import = "plugins_always",    cond = true },
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
@@ -59,183 +58,171 @@ vim.opt.listchars = "tab:  "
 vim.opt.guicursor = "a:block-Cursor"
 vim.api.nvim_set_hl(0, "Cursor", { reverse = true })
 -- vim.opt.guicursor = {
-  --   'n-v-c:block-Cursor',
-  --   'i-ci:block-Cursor/lCursor-blinkon400-blinkoff400',
-  --   'r:block-Cursor'
-  -- }
+--   'n-v-c:block-Cursor',
+--   'i-ci:block-Cursor/lCursor-blinkon400-blinkoff400',
+--   'r:block-Cursor'
+-- }
 
-  -- vim.diagnostic.config({ virtual_text = true, update_in_insert = false, })
+-- vim.diagnostic.config({ virtual_text = true, update_in_insert = false, })
 
-  vim.opt.scrolloff = 5
-  vim.opt.ignorecase = true
-  vim.opt.smartcase = true
-  vim.opt.incsearch = true
-  vim.opt.hlsearch = true
+vim.opt.scrolloff = 5
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.incsearch = true
+vim.opt.hlsearch = true
 
-  vim.keymap.set("n", "<leader>o", "o<Esc>", { desc = "Add new line below" })
-  vim.keymap.set("n", "<leader>O", "O<Esc>", { desc = "Add new line above" })
-  vim.keymap.set('n', 'go', "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Add empty line below (count aware, preserves cursor)" })
-  vim.keymap.set('n', 'gO', "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Add empty line above (count aware, preserves cursor)" })
+vim.keymap.set("n", "<leader>o", "o<Esc>", { desc = "Add new line below" })
+vim.keymap.set("n", "<leader>O", "O<Esc>", { desc = "Add new line above" })
+vim.keymap.set('n', 'go', "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Add empty line below (count aware, preserves cursor)" })
+vim.keymap.set('n', 'gO', "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Add empty line above (count aware, preserves cursor)" })
 
-  local opts = { noremap = true, silent = true }
+local opts = { noremap = true, silent = true }
 
-  vim.keymap.set({"n", "v"}, "<leader>y", '"+y', opts)
-  vim.keymap.set({"n", "v"}, "<leader>p", '"+p', opts)
-  vim.keymap.set({"n", "v"}, "<leader>Y", '"+Y', opts)
-  vim.keymap.set({"n", "v"}, "<leader>P", '"+P', opts)
+vim.keymap.set({"n", "v"}, "<leader>y", '"+y', opts)
+vim.keymap.set({"n", "v"}, "<leader>p", '"+p', opts)
+vim.keymap.set({"n", "v"}, "<leader>Y", '"+Y', opts)
+vim.keymap.set({"n", "v"}, "<leader>P", '"+P', opts)
 
-  -- delete to clipboard
-  vim.keymap.set({"n", "v"}, "<leader>d", '"+d', { noremap = true, silent = true })
+-- delete to clipboard
+vim.keymap.set({"n", "v"}, "<leader>d", '"+d', { noremap = true, silent = true })
 
-  vim.keymap.set("v", "<", "<gv", opts)
-  vim.keymap.set("v", ">", ">gv", opts)
+vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv", opts)
 
-  vim.keymap.set("v", "J", ":m '>+1<CR>gv-gv", opts)
-  vim.keymap.set("v", "K", ":m '<-2<CR>gv-gv", opts)
-  -- vim.keymap.set("v", "J", ":m .+1<CR>==", opts)
-  -- vim.keymap.set("v", "K", ":m .-2<CR>==", opts)
-  -- vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", opts)
-  -- vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
+vim.keymap.set("v", "J", ":m '>+1<CR>gv-gv", opts)
+vim.keymap.set("v", "K", ":m '<-2<CR>gv-gv", opts)
+-- vim.keymap.set("v", "J", ":m .+1<CR>==", opts)
+-- vim.keymap.set("v", "K", ":m .-2<CR>==", opts)
+-- vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", opts)
+-- vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
 
-  vim.keymap.set('n', 'J', "mzJ`z")
+vim.keymap.set('n', 'J', "mzJ`z")
 
-  -- make search in the middle
-  vim.keymap.set('n', 'n', "nzzzv")
-  vim.keymap.set('n', 'N', "Nzzzv")
+-- make search in the middle
+vim.keymap.set('n', 'n', "nzzzv")
+vim.keymap.set('n', 'N', "Nzzzv")
 
-  vim.keymap.set('n', '<Esc>', function ()
-    vim.snippet.stop()
-    vim.cmd('noh')
-  end, { silent = true })
+vim.keymap.set('n', '<Esc>', function ()
+  vim.snippet.stop()
+  vim.cmd('noh')
+end, { silent = true })
 
-  -- renames everything selected
-  vim.keymap.set("v", "<leader>r", ":s/\\%V/g<Left><Left>")
+-- renames everything selected
+vim.keymap.set("v", "<leader>r", ":s/\\%V/g<Left><Left>")
 
-  -- leave terminal mode
-  vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
+-- leave terminal mode
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
 
-  vim.keymap.set('n', '<leader>q', '<cmd>close!<CR>', { desc = "Close (force)" })
+vim.keymap.set('n', '<leader>q', '<cmd>close!<CR>', { desc = "Close (force)" })
 
-  -- Navigate windows
-  vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window' })
-  vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Go to Lower Window' })
-  vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window' })
-  vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window' })
+-- Navigate windows
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Go to Lower Window' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window' })
 
-  -- Resize windows
-  vim.keymap.set('n', '<C-S-k>', ':resize +2<CR>')
-  vim.keymap.set('n', '<C-S-j>', ':resize -2<CR>')
-  vim.keymap.set('n', '<C-S-h>', ':vertical resize -2<CR>')
-  vim.keymap.set('n', '<C-S-l>', ':vertical resize +2<CR>')
+-- Resize windows
+vim.keymap.set('n', '<C-S-k>', ':resize +2<CR>')
+vim.keymap.set('n', '<C-S-j>', ':resize -2<CR>')
+vim.keymap.set('n', '<C-S-h>', ':vertical resize -2<CR>')
+vim.keymap.set('n', '<C-S-l>', ':vertical resize +2<CR>')
 
-  vim.keymap.set("i", "<S-Tab>", "<C-d>", opts)
+vim.keymap.set("i", "<S-Tab>", "<C-d>", opts)
 
-  vim.api.nvim_create_user_command('W', 'write', {})
+vim.api.nvim_create_user_command('W', 'write', {})
 
-  vim.filetype.add({
-    extension = {
-      h = "c",
-    },
-  })
+vim.filetype.add({
+  extension = {
+    h = "c",
+  },
+})
 
-  -- no more comments on new lines
-  vim.api.nvim_create_autocmd("FileType", {
+-- no more comments on new lines
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt.formatoptions:remove("c")
+    vim.opt.formatoptions:remove("r")
+    vim.opt.formatoptions:remove("o")
+  end,
+})
+
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   desc = "Set CWD to Oil directory",
+--   callback = function()
+--     local path = vim.api.nvim_buf_get_name(0)
+--     if path:sub(1, 6) == "oil://" then
+--       local real_path = path:sub(7)
+--       vim.api.nvim_set_current_dir(real_path)
+--     end
+--   end,
+-- })
+
+local errors_only = false
+vim.api.nvim_create_user_command("ErrorsOnly", function()
+  errors_only = not errors_only
+
+  if errors_only then
+    vim.diagnostic.config({
+      severity = { min = vim.diagnostic.severity.ERROR },
+      virtual_text = { severity = { min = vim.diagnostic.severity.ERROR } },
+      signs = { severity = { min = vim.diagnostic.severity.ERROR } },
+      underline = { severity = { min = vim.diagnostic.severity.ERROR } },
+    })
+    print("Diagnostics: errors only")
+  else
+    vim.diagnostic.config({
+      severity = nil,
+      virtual_text = { severity = nil },
+      signs = { severity = nil },
+      underline = { severity = nil },
+    })
+    print("Diagnostics: all levels")
+  end
+end, {})
+
+vim.api.nvim_create_user_command(
+  'RemoveCarriageReturns', function()
+    vim.cmd('silent! %s/\\r//g')
+    print("Carriage returns removed.")
+  end,
+  { desc = 'Remove carriage return characters from the buffer', }
+)
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank({
+      timeout = 200, -- milliseconds
+      -- Optional: change the highlight group
+      -- higroup = "Visual",
+    })
+  end,
+})
+
+if vim.g.vscode then
+  -- VSCode Neovim
+  require("vscode_keymaps")
+else
+  local group = vim.api.nvim_create_augroup("ThemeCustomization", { clear = true })
+  vim.api.nvim_create_autocmd("ColorScheme", {
+    group = group,
     pattern = "*",
     callback = function()
-      vim.opt.formatoptions:remove("c")
-      vim.opt.formatoptions:remove("r")
-      vim.opt.formatoptions:remove("o")
-    end,
-  })
-
-  vim.api.nvim_create_autocmd("BufEnter", {
-    desc = "Set CWD to current file or Oil directory",
-    callback = function()
-      local path = vim.api.nvim_buf_get_name(0)
-      if path:sub(1, 6) == "oil://" then
-        local real_path = path:sub(7)
-        vim.api.nvim_set_current_dir(real_path)
-      elseif path ~= "" and vim.bo.buftype == "" then
-        vim.api.nvim_set_current_dir(vim.fs.dirname(path))
-      end
-    end,
-  })
-
-  local errors_only = false
-  vim.api.nvim_create_user_command("ErrorsOnly", function()
-    errors_only = not errors_only
-
-    if errors_only then
-      vim.diagnostic.config({
-        severity = { min = vim.diagnostic.severity.ERROR },
-        virtual_text = { severity = { min = vim.diagnostic.severity.ERROR } },
-        signs = { severity = { min = vim.diagnostic.severity.ERROR } },
-        underline = { severity = { min = vim.diagnostic.severity.ERROR } },
-      })
-      print("Diagnostics: errors only")
-    else
-      vim.diagnostic.config({
-        severity = nil,
-        virtual_text = { severity = nil },
-        signs = { severity = nil },
-        underline = { severity = nil },
-      })
-      print("Diagnostics: all levels")
-    end
-  end, {})
-
-  vim.api.nvim_create_user_command(
-    'RemoveCarriageReturns', function()
-      vim.cmd('silent! %s/\\r//g')
-      print("Carriage returns removed.")
-    end,
-    { desc = 'Remove carriage return characters from the buffer', }
-  )
-
-  vim.api.nvim_create_autocmd("TextYankPost", {
-    group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
-    callback = function()
-      vim.highlight.on_yank({
-        timeout = 200, -- milliseconds
-        -- Optional: change the highlight group
-        -- higroup = "Visual",
+      local visual = vim.api.nvim_get_hl(0, { name = "Visual" })
+      vim.api.nvim_set_hl(0, "VisualNonText", {
+        fg = "#707070",
+        bg = visual.bg,
       })
     end,
   })
 
+  vim.cmd.colorscheme("vscode")
+  -- vim.cmd.colorscheme("gruber-darker")
+  -- vim.cmd.colorscheme("rose-pine")
+end
 
-  vim.api.nvim_create_user_command("OpenPdf", function()
-    local filepath = vim.api.nvim_buf_get_name(0)
-    if filepath:match("%.typ$") then
-      local pdf_path = filepath:gsub("%.typ$", ".pdf")
-      vim.system({ "open", pdf_path })
-    end
-  end, {})
-
-
-  if vim.g.vscode then
-    -- VSCode Neovim
-    require("vscode_keymaps")
-  else
-    local group = vim.api.nvim_create_augroup("ThemeCustomization", { clear = true })
-    vim.api.nvim_create_autocmd("ColorScheme", {
-      group = group,
-      pattern = "*",
-      callback = function()
-        local visual = vim.api.nvim_get_hl(0, { name = "Visual" })
-        vim.api.nvim_set_hl(0, "VisualNonText", {
-          fg = "#707070",
-          bg = visual.bg,
-        })
-      end,
-    })
-
-    vim.cmd.colorscheme("vscode")
-    -- vim.cmd.colorscheme("gruber-darker")
-    -- vim.cmd.colorscheme("rose-pine")
-  end
-
-  if vim.g.neovide then
-    require("neovide")
-  end
+if vim.g.neovide then
+  require("neovide")
+end
 

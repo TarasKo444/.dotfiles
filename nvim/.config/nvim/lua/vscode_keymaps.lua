@@ -1,16 +1,38 @@
-local keymap = vim.keymap.set
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- remap leader key
-keymap("n", "<Space>", "", opts)
+local vscode = require("vscode")
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- paste preserves primal yanked piece
-keymap("v", "p", '"_dP', opts)
+-- Disable Space before assigning it as leader
+map("n", "<Space>", "<Nop>", opts)
 
-keymap({"i","n", "v"}, "<Esc>", "<cmd>lua require('vscode').action('hideSuggestWidget')<CR><Esc>", opts)
+-- Paste without overwriting the unnamed register
+map("v", "p", '"_dP', opts)
 
-keymap({"n", "i"}, "<Tab>", "<cmd>require('vscode').action('editor.action.inlineSuggest.commit')<CR>", opts)
+-- Escape: hide suggestions and clear search highlight
+map({ "n", "i", "v" }, "<Esc>", function()
+    vscode.action("hideSuggestWidget")
 
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+    if vim.fn.mode() == "n" then
+        vim.cmd("nohlsearch")
+    end
+
+    vim.api.nvim_feedkeys(
+        vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+        "n",
+        false
+    )
+end, opts)
+
+-- Accept inline suggestion
+map({ "n", "i" }, "<Tab>", function()
+    vscode.action("editor.action.inlineSuggest.commit")
+end, opts)
+
+-- Show hover / diagnostics
+map("n", "<leader>sd", function()
+    vscode.action("editor.action.showHover")
+end, { desc = "Show Hover" })
