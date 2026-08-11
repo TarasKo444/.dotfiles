@@ -6,6 +6,13 @@ return {
       platform = {
         roblox = true,
       },
+      fflags = {
+        enable_new_solver = true, -- enables the fflags required for luau's new type solver
+        sync = true, -- sync currently enabled fflags with roblox's published fflags
+        override = { -- override fflags passed to luau 
+          LuauTableTypeMaximumStringifierLength = "100",
+        },
+      },
       sourcemap = {
         enabled = true,
         autogenerate = true,

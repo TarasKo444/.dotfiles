@@ -21,5 +21,6 @@ return {
     vim.keymap.set("n", "<leader>fh", function () FzfLua.help_tags() end, { silent = true })
     vim.keymap.set("n", "<leader>fa", function () FzfLua.builtin() end, { silent = true })
     vim.keymap.set("n", "<leader>ft", function () FzfLua.colorschemes() end, { silent = true })
+    vim.keymap.set("n", "<leader>fr", function () FzfLua.resume() end, { silent = true, desc = "Resume last fzf" })
   end
 }

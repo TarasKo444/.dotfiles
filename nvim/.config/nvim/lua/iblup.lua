@@ -48,7 +48,7 @@ vim.opt.termguicolors = true
 vim.opt.updatetime = 750
 
 vim.opt.shiftwidth = 4
-vim.opt.tabstop = 8
+vim.opt.tabstop = 4
 vim.opt.smarttab = true
 vim.opt.softtabstop = 0
 vim.opt.expandtab = true
@@ -122,12 +122,15 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window' })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window' })
 
 -- Resize windows
-vim.keymap.set('n', '<C-S-k>', ':resize +2<CR>')
-vim.keymap.set('n', '<C-S-j>', ':resize -2<CR>')
-vim.keymap.set('n', '<C-S-h>', ':vertical resize -2<CR>')
-vim.keymap.set('n', '<C-S-l>', ':vertical resize +2<CR>')
+vim.keymap.set('n', '<C-S-k>', ':resize +2<CR>', { silent = true })
+vim.keymap.set('n', '<C-S-j>', ':resize -2<CR>', { silent = true })
+vim.keymap.set('n', '<C-S-h>', ':vertical resize -2<CR>', { silent = true })
+vim.keymap.set('n', '<C-S-l>', ':vertical resize +2<CR>', { silent = true })
 
 vim.keymap.set("i", "<S-Tab>", "<C-d>", opts)
+
+vim.keymap.set('n', ']b', ':bnext<CR>', { noremap = true, silent = true, desc = 'Next buffer' })
+vim.keymap.set('n', '[b', ':bprevious<CR>', { noremap = true, silent = true, desc = 'Previous buffer' })
 
 vim.api.nvim_create_user_command('W', 'write', {})
 
@@ -192,7 +195,7 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
   callback = function()
-    vim.highlight.on_yank({
+    vim.hl.on_yank({
       timeout = 200, -- milliseconds
       -- Optional: change the highlight group
       -- higroup = "Visual",
@@ -217,7 +220,8 @@ else
     end,
   })
 
-  vim.cmd.colorscheme("vscode")
+  vim.cmd.colorscheme("gruvdark")
+  -- vim.cmd.colorscheme("vscode")
   -- vim.cmd.colorscheme("gruber-darker")
   -- vim.cmd.colorscheme("rose-pine")
 end
