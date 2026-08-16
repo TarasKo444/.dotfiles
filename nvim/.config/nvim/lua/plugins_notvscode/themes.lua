@@ -20,6 +20,9 @@ return {
     "Mofiqul/vscode.nvim"
   },
   {
+    "folke/tokyonight.nvim",
+  },
+  {
     "rose-pine/neovim",
     name = "rose-pine",
     config = function()

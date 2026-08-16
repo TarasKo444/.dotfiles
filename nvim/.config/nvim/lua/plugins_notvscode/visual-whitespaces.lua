@@ -20,6 +20,6 @@ return {
       mac = "",
       dos = "",
     },
-    ignore = { filetypes = {}, buftypes = {} },
+    ignore = { filetypes = { "oil" } },
   }
 }

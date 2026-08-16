@@ -23,7 +23,9 @@ return {
         end
       },
       win_options = {
-        wrap = true
+        wrap = true,
+        conceallevel = 3,
+        concealcursor = "nvic",
       },
       confirmation = {
         border = 'single'
